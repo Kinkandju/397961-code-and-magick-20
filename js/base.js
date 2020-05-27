@@ -10,7 +10,6 @@ window.getFireballSpeed = function (movingLeft) {
 
 // Данные о волшебнике
 window.wizardWidth = 70;
-// var wizardHeight = 1.337 * window.wizardWidth;
 window.getWizardHeight = function () {
   return 1.337 * window.wizardWidth;
 };
