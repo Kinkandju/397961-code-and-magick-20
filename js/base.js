@@ -1,26 +1,24 @@
 'use strict';
 
-// Размеры игрового поля
-var gameFieldWidth = 700;
-var gameFieldHeight = 300;
-
 // Данные о фаерболе
-var fireballSize = 22;
-function getFireballSpeed (isWindFromLeft) {
-  if (isWindFromLeft) {
-    return 5;
-  } else {
-    return 2;
-  }
+window.fireballSize = 22;
+window.getFireballSpeed = function (movingLeft) {
+  return movingLeft ? 5 : 2;
+// var result = условие ? значение1 : значение2;
+// Сначала вычисляется условие: если оно истинно, тогда возвращается значение1, в противном случае – значение2.
 };
 
 // Данные о волшебнике
-var wizardWidth = 70;
-var wizardHeight = 1.337 * wizardWidth;
-var wizardSpeed = 3;
-function getWizardX (gameFieldWidth) {
-  return (gameFieldWidth - wizardWidth) / 2;
+window.wizardWidth = 70;
+// var wizardHeight = 1.337 * wizardWidth;
+window.getWizardHeight = function () {
+  return 1.337 * window.wizardWidth;
 };
-function getWizardY (gameFieldHeight) {
-  return gameFieldHeight / 3;
+window.wizardSpeed = 3;
+
+window.getWizardX = function (width) {
+  return (width - window.wizardWidth) / 2;
+};
+window.getWizardY = function (height) {
+  return height / 3;
 };
