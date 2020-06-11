@@ -32,21 +32,6 @@ var WIZARD_SURNAMES = [
   'Нионго',
   'Ирвинг'];
 var WIZARD_COUNT = 4;
-var COAT_COLORS = [
-  'rgb(101, 137, 164)',
-  'rgb(241, 43, 107)',
-  'rgb(146, 100, 161)',
-  'rgb(56, 159, 117)',
-  'rgb(215, 210, 55)',
-  'rgb(0, 0, 0)'
-];
-var EYES_COLORS = [
-  'black',
-  'red',
-  'blue',
-  'yellow',
-  'green',
-];
 var FAREBALL_COLORS = [
   '#ee4830',
   '#30a8ee',
@@ -189,17 +174,18 @@ var wizardFireballColor = wizardFireball.querySelector('input[name="fireball-col
 
 function getNextColor(colors, currentColor) {
   var currentColorIndex = colors.indexOf(currentColor);
+  var nextColorIndex = currentColorIndex + 1;
 
-  return (currentColorIndex !== colors.length - 1) ? colors[currentColorIndex + 1] : colors[0];
+  return (currentColorIndex === colors.length) ? colors[0] : colors[nextColorIndex];
 }
 
 var onCoatClick = function () {
-  wizardCoatColor = getNextColor(COAT_COLORS, wizardCoatColor);
+  wizardCoatColor = getNextColor(WIZARD_COATS, wizardCoatColor);
   wizardCoat.style.fill = wizardCoatColor;
 };
 
 var onEyesClick = function () {
-  wizardEyesColor = getNextColor(EYES_COLORS, wizardEyesColor);
+  wizardEyesColor = getNextColor(WIZARD_EYES, wizardEyesColor);
   wizardEyes.style.fill = wizardEyesColor;
 };
 
