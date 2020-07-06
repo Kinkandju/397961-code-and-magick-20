@@ -42,15 +42,16 @@
     }));
   }
 
-  window.colorWizard.onCoatClick = window.debounce(function (color) {
-    coatColor = color;
-    updateWizards();
-  });
-
-  window.colorWizard.onEyesClick = window.debounce(function (color) {
-    eyesColor = color;
-    updateWizards();
-  });
+  window.colorWizard = {
+    onCoatClick: window.debounce(function (color) {
+      coatColor = color;
+      updateWizards();
+    }),
+    onEyesClick: window.debounce(function (color) {
+      eyesColor = color;
+      updateWizards();
+    })
+  };
 
   window.sortWizards = {
     successHandler: function (data) {
