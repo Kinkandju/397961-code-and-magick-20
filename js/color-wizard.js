@@ -20,13 +20,21 @@
   }
 
   var onCoatClick = function () {
-    wizardCoatColor = getNextColor(window.setup.WIZARD_COATS, wizardCoatColor);
-    wizardCoat.style.fill = wizardCoatColor;
+    var newColor = getNextColor(window.setup.WIZARD_COATS, wizardCoatColor);
+
+    wizardCoatColor = newColor;
+    wizardCoat.style.fill = newColor;
+
+    window.colorWizard.onCoatClick(newColor);
   };
 
   var onEyesClick = function () {
-    wizardEyesColor = getNextColor(window.setup.WIZARD_EYES, wizardEyesColor);
-    wizardEyes.style.fill = wizardEyesColor;
+    var newColor = getNextColor(window.setup.WIZARD_EYES, wizardEyesColor);
+
+    wizardEyesColor = newColor;
+    wizardEyes.style.fill = newColor;
+
+    window.colorWizard.onEyesClick(newColor);
   };
 
   var onFireballClick = function () {

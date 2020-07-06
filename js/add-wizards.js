@@ -1,51 +1,35 @@
 'use strict';
 
 (function () {
-  var setup = document.querySelector('.setup');
   var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
   .querySelector('.setup-similar-item');
 
+  function createWizardElement(wizard) {
+    var wizardElement = similarWizardTemplate.cloneNode(true);
+
+    wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
+    wizardElement.querySelector('.wizard-coat').style.fill = wizard.colorCoat;
+    wizardElement.querySelector('.wizard-eyes').style.fill = wizard.colorEyes;
+
+    return wizardElement;
+  }
+
   window.addWizards = {
-    renderWizards: function () {
-      function createWizardElement(wizard) {
-        var wizardElement = similarWizardTemplate.cloneNode(true);
+    renderWizards: function (wizardsData) {
+      var similarWizardList = document.querySelector('.setup-similar-list');
+      var fragment = document.createDocumentFragment();
 
-        wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
-        wizardElement.querySelector('.wizard-coat').style.fill = wizard.colorCoat;
-        wizardElement.querySelector('.wizard-eyes').style.fill = wizard.colorEyes;
+      var takeNumber = wizardsData.length > window.setup.WIZARD_COUNT ?
+        window.setup.WIZARD_COUNT : wizardsData.length;
 
-        return wizardElement;
+      similarWizardList.innerHTML = '';
+
+      for (var i = 0; i < takeNumber; i++) {
+        fragment.appendChild(createWizardElement(wizardsData[i]));
       }
 
-      function getRandomWizards() {
-        window.backend.load(function (wizardsData) {
-          var wizards = [];
-          wizards = wizardsData;
-
-          var similarWizardList = document.querySelector('.setup-similar-list');
-          var fragment = document.createDocumentFragment();
-
-          for (var i = 0; i < window.setup.WIZARD_COUNT; i++) {
-            fragment.appendChild(createWizardElement(wizards[i]));
-          }
-
-          similarWizardList.appendChild(fragment);
-
-          setup.querySelector('.setup-similar').classList.remove('hidden');
-        });
-      }
-
-      getRandomWizards();
-    },
-
-    removeWizards: function () {
-      var wizardItems = document.querySelectorAll('.setup-similar-item');
-      wizardItems.forEach(function (wizard) {
-        wizard.remove();
-      });
-    },
+      similarWizardList.appendChild(fragment);
+    }
   };
-
-  window.addWizards.renderWizards();
 })();
