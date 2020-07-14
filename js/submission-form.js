@@ -9,8 +9,8 @@
     var node = document.createElement('div');
     node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
     node.style.position = 'absolute';
-    node.style.left = 0;
-    node.style.right = window.backend.load(window.sortWizards.successHandler, errorHandler);
+    node.style.left = '0px';
+    node.style.right = '0px';
     node.style.fontSize = '30px';
 
     node.textContent = errorMessage;
@@ -18,12 +18,12 @@
     document.body.insertAdjacentElement('afterbegin', node);
   };
 
-  window.backend.load(window.sortWizards.successHandler, errorHandler);
+  window.backend.load(window.colorWizard.successHandler, errorHandler);
 
   var sendForm = function () {
     setup.classList.add('hidden');
     buttonSubmit.disabled = false;
-    window.sortWizards.successHandler();
+    window.colorWizard.successHandler();
   };
 
   var showError = function (errorMessage) {
